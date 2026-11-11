@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liquidity Forecast Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+        h1 { color: #1a73e8; text-align: center; }
+        .container { max-width: 1150px; margin: 0 auto; }
+        .card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card h2 { margin-top: 0; color: #333; border-bottom: 2px solid #1a73e8; padding-bottom: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .metric { background: #e8f0fe; padding: 15px; border-radius: 8px; text-align: center; }
+        .metric .value { font-size: 20px; font-weight: bold; color: #1a73e8; }
+        .metric .label { font-size: 13px; color: #555; margin-top: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; font-size: 14px; }
+        th { background-color: #1a73e8; color: white; }
+        .high { color: #d93025; font-weight: bold; }
+        .medium { color: #f9ab00; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Liquidity Forecast Dashboard</h1>
+
+        <!-- Key Metrics -->
+        <div class="card">
+            <h2>Key Metrics</h2>
+            <div class="grid">
+                <div class="metric">
+                    <div class="value">53,820,872</div>
+                    <div class="label">Current Ledger Balance</div>
+                </div>
+                <div class="metric">
+                    <div class="value">29,782,143</div>
+                    <div class="label">Expected Inflows</div>
+                </div>
+                <div class="metric">
+                    <div class="value">15,757,646</div>
+                    <div class="label">Expected Outflows</div>
+                </div>
+                <div class="metric">
+                    <div class="value">67,845,369</div>
+                    <div class="label">Projected Cash (Base)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario Comparison -->
+        <div class="card">
+            <h2>Scenario Comparison</h2>
+            <table>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Total Adjusted Cash</th>
+                    <th>What it means</th>
+                </tr>
+                <tr>
+                    <td><strong>BASE</strong></td>
+                    <td>67,845,368.99</td>
+                    <td>Normal conditions – everything on time</td>
+                </tr>
+                <tr>
+                    <td><strong>DELAYED RECEIPT</strong></td>
+                    <td>58,910,725.98</td>
+                    <td>Customers pay late (inflows reduced 30%)</td>
+                </tr>
+                <tr>
+                    <td><strong>STRESS</strong></td>
+                    <td>53,568,864.74</td>
+                    <td>Crisis: inflows −40% + outflows +15%</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Top 5 Accounts -->
+        <div class="card">
+            <h2>Top 5 Accounts by Projected Cash</h2>
+            <table>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Entity</th>
+                    <th>Currency</th>
+                    <th>Projected Cash</th>
+                </tr>
+
+                <tr>
+                    <td>BANKACC-ENT-000027-002</td>
+                    <td>Entity 27</td>
+                    <td>GBP</td>
+                    <td>1,190,868.94</td>
+                </tr>
+    
+                <tr>
+                    <td>BANKACC-ENT-000001-003</td>
+                    <td>Entity 1</td>
+                    <td>EUR</td>
+                    <td>908,607.50</td>
+                </tr>
+    
+                <tr>
+                    <td>BANKACC-ENT-000023-004</td>
+                    <td>Entity 23</td>
+                    <td>JPY</td>
+                    <td>905,918.13</td>
+                </tr>
+    
+                <tr>
+                    <td>BANKACC-ENT-000026-002</td>
+                    <td>Entity 26</td>
+                    <td>INR</td>
+                    <td>889,094.44</td>
+                </tr>
+    
+                <tr>
+                    <td>BANKACC-ENT-000016-003</td>
+                    <td>Entity 16</td>
+                    <td>GBP</td>
+                    <td>876,762.43</td>
+                </tr>
+    
+            </table>
+        </div>
+
+        <!-- Exceptions -->
+        <div class="card">
+            <h2>Known Exceptions (Ground Truth)</h2>
+            <table>
+                <tr>
+                    <th>Issue ID</th>
+                    <th>Issue Type</th>
+                    <th>Severity</th>
+                    <th>Related Account</th>
+                </tr>
+
+                <tr>
+                    <td>GT-001</td>
+                    <td>BALANCE_MISMATCH</td>
+                    <td class="high">HIGH</td>
+                    <td>BANKACC-ENT-000001-001</td>
+                </tr>
+    
+                <tr>
+                    <td>GT-002</td>
+                    <td>MISSING_FX</td>
+                    <td class="medium">MEDIUM</td>
+                    <td>BANKACC-ENT-000001-002</td>
+                </tr>
+    
+                <tr>
+                    <td>GT-003</td>
+                    <td>DOUBLE_COUNT</td>
+                    <td class="high">HIGH</td>
+                    <td>BANKACC-ENT-000001-003</td>
+                </tr>
+    
+                <tr>
+                    <td>GT-004</td>
+                    <td>FORECAST_USES_ACTUAL_AFTER_CUTOFF</td>
+                    <td class="high">HIGH</td>
+                    <td>BANKACC-ENT-000002-001</td>
+                </tr>
+    
+                <tr>
+                    <td>GT-005</td>
+                    <td>MIXED_CURRENCY_NO_CONVERSION</td>
+                    <td class="medium">MEDIUM</td>
+                    <td>BANKACC-ENT-000002-002</td>
+                </tr>
+    
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>How the System Works</h2>
+            <ol>
+                <li>Generate entities, bank accounts, ledger, receivables, payables and FX rates</li>
+                <li>Calculate current ledger balance + expected inflows − expected outflows</li>
+                <li>Run three scenarios: Base, Delayed Receipt, Stress</li>
+                <li>Flag known data problems using ground truth</li>
+                <li>Show everything in this dashboard</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

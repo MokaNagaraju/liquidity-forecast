@@ -1,0 +1,6 @@
+issue_id,issue_type,description,related_account,severity
+GT-001,BALANCE_MISMATCH,Opening + Ledger does not equal Closing,BANKACC-ENT-000001-001,HIGH
+GT-002,MISSING_FX,FX rate missing for currency conversion,BANKACC-ENT-000001-002,MEDIUM
+GT-003,DOUBLE_COUNT,Cash flow counted twice,BANKACC-ENT-000001-003,HIGH
+GT-004,FORECAST_USES_ACTUAL_AFTER_CUTOFF,Forecast used actual data after cutoff date,BANKACC-ENT-000001-004,HIGH
+GT-005,MIXED_CURRENCY_NO_CONVERSION,Mixed currencies without proper FX conversion,BANKACC-ENT-000001-005,MEDIUM

@@ -1,0 +1,13 @@
+{
+  "seed": 20261022,
+  "generated_at": "2026-11-11T16:16:25.821019",
+  "entities": 30,
+  "accounts": 150,
+  "ledger_entries": 99999,
+  "receivables": 800,
+  "payables": 600,
+  "currency_rates": 229,
+  "forecast_items": 20003,
+  "forecast_runs": 3,
+  "edge_cases_injected": 5
+}
